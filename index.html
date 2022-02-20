@@ -1,0 +1,53 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Plain JS Redux User Info Manager</title>
+  <script src="https://unpkg.com/redux@latest"></script>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <header>
+    <h1>Plain JS Redux User Info Manager</h1>
+  </header>
+  <main>
+    <div class="info-card">
+      <div class="info-card_content">
+        <p>Full name: <span id="card_full-name-text"></span></p>
+        <p>Email: <span id="card_email-text"></span></p>
+        <p>Age: <span id="card_age-text"></span></p>
+        <p>Last Login: <span id="card_last-login-text"></span></p>
+      </div>
+    </div>
+    <hr />
+    <div class="form-container">
+      <p class="form-instructions">
+        You can change your user info displayed above in the form below by entering in any changes you'd like to make and pressing the "Submit" button
+      </p>
+      <form id="user_data_form">
+        <p>
+          <label for="full_name">Full Name:</label><br />
+          <input type="text" name="full_name" id="full_name_input" placeholder="e.g. Bob Jenkins">
+        </p>
+        <p>
+          <label for="email">Email Address:</label><br />
+          <input type="email" name="email" id="email_input" placeholder="e.g. bob.jenkins@email.com">
+        </p>
+        <p>
+          <label for="age">Age:</label><br />
+          <input type="number" name="age" id="age_input" placeholder="e.g. 55">
+        </p>
+        <p>
+          <button id="form-reset-button">Reset</button>
+          <button id="form-submit-button">Submit</button>
+        </p>
+      </form>
+    </div>
+  </main>
+  <footer>
+    <p>Shitty web app created by <a href="https://twitter.com/jwhubert91">@jwhubert91</a></p>
+  </footer>
+  <script src="./index.js"></script>
+</body>
+</html>
