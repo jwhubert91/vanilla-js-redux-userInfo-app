@@ -5,6 +5,10 @@ const emailInputEl = document.querySelector('#email_input');
 const ageInputEl = document.querySelector('#age_input');
 const resetButtonEl = document.querySelector('#form-reset-button');
 const submitButtonEl = document.querySelector('#form-submit-button');
+const nameOutputEl = document.querySelector('#card_full-name-text');
+const emailOutputEl = document.querySelector('#card_email-text');
+const ageOutputEl = document.querySelector('#card_age-text');
+const loginOutputEl = document.querySelector('#card_last-login-text');
 
 // REDUX Initialize the Store
 const initialState = {
@@ -46,15 +50,45 @@ store.subscribe(render);
 
 // Callbacks and functions
 function render() {
-  console.log(store.getState())
+  const currentState = store.getState();
+  console.log(currentState);
+  const { fullName, email, age, lastLogin } = currentState;
+  nameOutputEl.innerHTML = fullName;
+  emailOutputEl.innerHTML = email;
+  ageOutputEl.innerHTML = age;
+  loginOutputEl.innerHTML = lastLogin;
 }
 
-function formSubmit() {
-  
+function submitForm() {
+  const values = {
+    fullName: nameInputEl.value,
+    email: emailInputEl.value,
+    age: ageInputEl.value,
+    lastLogin: getDate(),
+  };
+  newSubmission(values);
+}
+
+function resetForm() {
+  store.dispatch({type: 'RESET'});
+}
+
+function getDate() {
+  const now = new Date();
+  const formattedNow = now.toLocaleTimeString([], { hour: '2-digit', minute: "2-digit" });
+  return formattedNow;
 }
 
 // DOM Event Listeners
+submitButtonEl.addEventListener('click', (e)=> {
+  e.preventDefault();
+  submitForm();
+});
 
+resetButtonEl.addEventListener('click', (e)=> {
+  e.preventDefault();
+  resetForm();
+});
 
 /*
   REDUX STATE MANAGEMENT
